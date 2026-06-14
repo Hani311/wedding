@@ -131,7 +131,7 @@ export default function App() {
           <h2 className="font-display mt-6 text-3xl tracking-tight text-[color:var(--color-ink)] md:text-4xl">
             <AnimatedText text={t.rsvp.byHeading} stagger={0.025} />
           </h2>
-          <p className="mt-4 font-display text-base italic text-[color:var(--color-ink-muted)] md:text-lg">
+          <p className="mt-6 font-display text-base italic text-[color:var(--color-ink-muted)] md:text-lg">
             {t.rsvp.subline}
           </p>
           <button

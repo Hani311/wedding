@@ -159,7 +159,7 @@ export const en: Content = {
   rsvp: {
     eyebrow: 'RSVP',
     byHeading: 'Kindly respond by August 1, 2026',
-    subline: 'We can’t wait to celebrate with you.',
+    subline: 'We can’t wait to celebrate with you',
     replyButton: 'Reply',
     modalTitle: 'Will you be there?',
     successTitleYes: 'Wonderful!',
@@ -250,8 +250,8 @@ export const ar: Content = {
 
   rsvp: {
     eyebrow: 'تأكيد الحضور',
-    byHeading: 'نرجو تأكيد الحضور قبل الأول من آب ٢٠٢٦',
-    subline: 'بحضوركم تكتمل فرحتنا.',
+    byHeading: 'نرجو الرد قبل الأول من آب ٢٠٢٦',
+    subline: 'بحضوركم تكتمل فرحتنا',
     replyButton: 'ردّ',
     modalTitle: '',
     successTitleYes: 'رائع!',
