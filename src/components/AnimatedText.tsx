@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { t } from '../i18n/content'
 
@@ -53,32 +54,41 @@ export default function AnimatedText({
     )
   }
 
+  // Per-character stagger, but grouped into per-word spans. Each char is an
+  // inline-block — an atomic inline, which is a line-break opportunity on both
+  // sides — so without grouping the line could break mid-word ("202" / "6").
+  // whitespace-nowrap on the word wrapper kills those intra-word breaks; the
+  // real spaces between words (rendered as text nodes) stay breakable.
+  let charIndex = 0
+  const words = text.split(' ')
   return (
     <span className={className} aria-label={text}>
-      {Array.from(text).map((char, i) =>
-        // Spaces are real text nodes, not spans — a whitespace-only
-        // inline-block collapses to zero width (which made "September 5"
-        // render as "September5"). Text nodes also let the line wrap.
-        char === ' ' ? (
-          ' '
-        ) : (
-          <motion.span
-            key={`${char}-${i}`}
-            initial={{ opacity: 0, y: rise }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: !retrigger, margin: '-10% 0px -20% 0px' }}
-            transition={{
-              delay: initialDelay + i * stagger,
-              duration,
-              ease: [0.22, 0.9, 0.3, 1],
-            }}
-            className="inline-block"
-            aria-hidden
-          >
-            {char}
-          </motion.span>
-        ),
-      )}
+      {words.map((word, wi) => (
+        <Fragment key={wi}>
+          {wi > 0 ? ' ' : null}
+          <span className="inline-block whitespace-nowrap" aria-hidden>
+            {Array.from(word).map((char) => {
+              const i = charIndex++
+              return (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: rise }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: !retrigger, margin: '-10% 0px -20% 0px' }}
+                  transition={{
+                    delay: initialDelay + i * stagger,
+                    duration,
+                    ease: [0.22, 0.9, 0.3, 1],
+                  }}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              )
+            })}
+          </span>
+        </Fragment>
+      ))}
     </span>
   )
 }
