@@ -219,8 +219,8 @@ export const ar: Content = {
       { words: ['هاني', 'و', 'رؤى'], accent: true },
     ],
     // Kept close to the English sizes so the 3-line block clears the wax seal.
-    baseSize: '3.7cqw',
-    accentSize: '4.8cqw',
+    baseSize: '3.4cqw',
+    accentSize: '5.5cqw',
   },
 
   names: { bride: 'هاني', groom: 'رؤى', combined: 'هاني و رؤى' },

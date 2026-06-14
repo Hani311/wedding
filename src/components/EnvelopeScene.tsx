@@ -118,8 +118,8 @@ export default function EnvelopeScene() {
                 {GREETING_LINES.map((line, li) => (
                   <span
                     key={li}
-                    className={`greeting-line font-script block whitespace-nowrap leading-[1.5] ${
-                      line.accent ? 'mt-[0.3em]' : ''
+                    className={`font-script block whitespace-nowrap leading-[1.5] ${
+                      line.accent ? 'greeting-accent mt-[0.3em]' : ''
                     }`}
                     style={{ fontSize: line.size }}
                   >

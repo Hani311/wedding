@@ -227,9 +227,10 @@ body {
   letter-spacing: normal !important;
 }
 
-/* The letter greeting gets a fancier calligraphic face in Arabic (Ruqʿah
-   style) — Amiri is a body Naskh and reads plain at display size. */
-[dir='rtl'] .greeting-line {
+/* Only the names line gets the fancier calligraphic face in Arabic (Aref
+   Ruqaa, Ruqʿah style). The other greeting lines stay in Amiri (a lighter
+   Naskh) so the body copy doesn't read as heavy/bold next to the thick Ruqaa. */
+[dir='rtl'] .greeting-accent {
   font-family: 'Aref Ruqaa', 'Amiri', serif;
 }
 
