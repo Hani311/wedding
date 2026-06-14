@@ -55,23 +55,30 @@ export default function AnimatedText({
 
   return (
     <span className={className} aria-label={text}>
-      {Array.from(text).map((char, i) => (
-        <motion.span
-          key={`${char}-${i}`}
-          initial={{ opacity: 0, y: rise }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: !retrigger, margin: '-10% 0px -20% 0px' }}
-          transition={{
-            delay: initialDelay + i * stagger,
-            duration,
-            ease: [0.22, 0.9, 0.3, 1],
-          }}
-          className="inline-block"
-          aria-hidden
-        >
-          {char === ' ' ? ' ' : char}
-        </motion.span>
-      ))}
+      {Array.from(text).map((char, i) =>
+        // Spaces are real text nodes, not spans — a whitespace-only
+        // inline-block collapses to zero width (which made "September 5"
+        // render as "September5"). Text nodes also let the line wrap.
+        char === ' ' ? (
+          ' '
+        ) : (
+          <motion.span
+            key={`${char}-${i}`}
+            initial={{ opacity: 0, y: rise }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: !retrigger, margin: '-10% 0px -20% 0px' }}
+            transition={{
+              delay: initialDelay + i * stagger,
+              duration,
+              ease: [0.22, 0.9, 0.3, 1],
+            }}
+            className="inline-block"
+            aria-hidden
+          >
+            {char}
+          </motion.span>
+        ),
+      )}
     </span>
   )
 }

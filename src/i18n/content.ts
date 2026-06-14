@@ -190,7 +190,7 @@ export const en: Content = {
 
   footer: {
     withLove: 'With love',
-    dateLine: 'September 5, 2026 · Malmö',
+    dateLine: 'September 5, 2026',
   },
 
   calendar: {
@@ -228,7 +228,7 @@ export const ar: Content = {
   names: { bride: 'هاني', groom: 'رؤى', combined: 'هاني و رؤى' },
 
   date: {
-    eyebrow: 'احفظوا التاريخ',
+    eyebrow: 'احفظوا الموعد',
     day: 'السبت',
     full: '٥ سبتمبر ٢٠٢٦',
     time: 'الساعة الخامسة مساءً',
@@ -253,9 +253,9 @@ export const ar: Content = {
   rsvp: {
     eyebrow: 'تأكيد الحضور',
     byHeading: 'نرجو تأكيد الحضور قبل الأول من أغسطس ٢٠٢٦',
-    subline: 'لا نطيق صبراً للاحتفال معكم.',
+    subline: 'بحضوركم تكتمل فرحتنا.',
     replyButton: 'ردّ',
-    modalTitle: 'هل ستشرّفوننا؟',
+    modalTitle: 'هل ستكونون معنا؟',
     successTitleYes: 'رائع!',
     successTitleNo: 'شكراً لكم',
     nameLabel: 'اسمك',
@@ -283,7 +283,7 @@ export const ar: Content = {
 
   footer: {
     withLove: 'مع الحب',
-    dateLine: '٥ سبتمبر ٢٠٢٦ · مالمو',
+    dateLine: '٥ سبتمبر ٢٠٢٦',
   },
 
   calendar: {
