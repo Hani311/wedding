@@ -92,7 +92,7 @@ export default function App() {
               </svg>
               <span>{t.venue.address}</span>
             </p>
-            <span className="mt-4 flex items-center justify-center gap-1.5 text-[10px] uppercase tracking-[0.4em] text-[color:var(--color-gold-text)] transition group-hover:text-[color:var(--color-gold-deep)]">
+            <span className="mt-4 flex items-center justify-center gap-1.5 text-[10px] rtl:text-[13px] uppercase tracking-[0.4em] text-[color:var(--color-gold-text)] transition group-hover:text-[color:var(--color-gold-deep)]">
               {t.venue.viewOnMap}
               <svg
                 viewBox="0 0 12 12"
@@ -154,9 +154,6 @@ export default function App() {
         </div>
         <p className="font-script text-3xl text-[color:var(--color-gold-deep)] md:text-4xl">
           {t.names.combined}
-        </p>
-        <p className="mt-3 text-[10px] uppercase tracking-[0.4em] text-[color:var(--color-ink-muted)]">
-          {t.footer.dateLine}
         </p>
       </footer>
 

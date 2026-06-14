@@ -137,6 +137,15 @@ export default function RsvpModal({ open, onClose }: Props) {
     }
   }
 
+  // Empty in some languages (Arabic drops the modal title) — render the <h3>
+  // only when there's text, and fall back to the eyebrow for the dialog name.
+  const dialogTitle =
+    status === 'success'
+      ? coming === 'yes'
+        ? t.rsvp.successTitleYes
+        : t.rsvp.successTitleNo
+      : t.rsvp.modalTitle
+
   if (typeof document === 'undefined') return null
   return createPortal(
     <AnimatePresence>
@@ -154,7 +163,7 @@ export default function RsvpModal({ open, onClose }: Props) {
             ref={dialogRef}
             role="dialog"
             aria-modal="true"
-            aria-labelledby="rsvp-title"
+            aria-labelledby="rsvp-eyebrow rsvp-title"
             tabIndex={-1}
             initial={{ scale: 0.94, y: 16 }}
             animate={{ scale: 1, y: 0 }}
@@ -203,19 +212,20 @@ export default function RsvpModal({ open, onClose }: Props) {
 
             <div className="relative px-6 pb-7 pt-12 md:px-10 md:pt-14 md:pb-10">
               <div className="text-center">
-                <p className="text-[11px] uppercase tracking-[0.45em] text-[color:var(--color-gold-text)]">
+                <p
+                  id="rsvp-eyebrow"
+                  className="text-[11px] uppercase tracking-[0.45em] text-[color:var(--color-gold-text)]"
+                >
                   {t.rsvp.eyebrow}
                 </p>
-                <h3
-                  id="rsvp-title"
-                  className="font-display mt-3 text-3xl tracking-tight text-[color:var(--color-ink)] md:text-4xl"
-                >
-                  {status === 'success'
-                    ? coming === 'yes'
-                      ? t.rsvp.successTitleYes
-                      : t.rsvp.successTitleNo
-                    : t.rsvp.modalTitle}
-                </h3>
+                {dialogTitle && (
+                  <h3
+                    id="rsvp-title"
+                    className="font-display mt-3 text-3xl tracking-tight text-[color:var(--color-ink)] md:text-4xl"
+                  >
+                    {dialogTitle}
+                  </h3>
+                )}
                 <p className="font-script mt-2 text-2xl text-[color:var(--color-gold-deep)] md:text-3xl">
                   {t.date.full}
                 </p>

@@ -78,9 +78,9 @@ export default function EnvelopeScene() {
           <div
             className="relative"
             style={{
-              // Floor lowered from 420px so the hero isn't clipped on phones
-              // narrower than 420px (e.g. 360–390px, where 90vmin < 420).
-              width: 'clamp(300px, 90vmin, 980px)',
+              // Floor kept low so the hero isn't clipped on phones narrower
+              // than the floor (e.g. 360–390px, where 95vmin < the floor).
+              width: 'clamp(320px, 95vmin, 1040px)',
               aspectRatio: '1440 / 1024',
               containerType: 'inline-size',
             }}
@@ -118,7 +118,7 @@ export default function EnvelopeScene() {
                 {GREETING_LINES.map((line, li) => (
                   <span
                     key={li}
-                    className={`font-script block whitespace-nowrap leading-[1.5] ${
+                    className={`greeting-line font-script block whitespace-nowrap leading-[1.5] ${
                       line.accent ? 'mt-[0.3em]' : ''
                     }`}
                     style={{ fontSize: line.size }}

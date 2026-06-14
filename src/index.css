@@ -227,6 +227,18 @@ body {
   letter-spacing: normal !important;
 }
 
+/* The letter greeting gets a fancier calligraphic face in Arabic (Ruqʿah
+   style) — Amiri is a body Naskh and reads plain at display size. */
+[dir='rtl'] .greeting-line {
+  font-family: 'Aref Ruqaa', 'Amiri', serif;
+}
+
+/* Arabic eyebrows read small at the Latin 11px with tracking removed — nudge
+   up a couple px so labels like المكان stay legible. */
+[dir='rtl'] .eyebrow {
+  font-size: 13px;
+}
+
 /* Scroll hint chevron — gentle vertical pulse so the line "drips" downward,
    reinforcing the call to scroll. */
 @keyframes scroll-hint-pulse {

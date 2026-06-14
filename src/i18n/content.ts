@@ -94,7 +94,6 @@ export type Content = {
 
   footer: {
     withLove: string
-    dateLine: string
   }
 
   // iCalendar event text (Add-to-calendar / .ics)
@@ -159,7 +158,7 @@ export const en: Content = {
 
   rsvp: {
     eyebrow: 'RSVP',
-    byHeading: 'Kindly respond by August 1, 2026',
+    byHeading: 'Kindly respond by August 1, 2026',
     subline: 'We can’t wait to celebrate with you.',
     replyButton: 'Reply',
     modalTitle: 'Will you be there?',
@@ -190,7 +189,6 @@ export const en: Content = {
 
   footer: {
     withLove: 'With love',
-    dateLine: 'September 5, 2026',
   },
 
   calendar: {
@@ -207,10 +205,10 @@ export const ar: Content = {
 
   metaTitle: 'هاني و رؤى — ٥ سبتمبر ٢٠٢٦',
   metaDescription:
-    'بمشاركة عائلتينا، يسعدنا دعوتكم لحضور حفل زفاف هاني و رؤى — ٥ سبتمبر ٢٠٢٦، في Magic Events بمدينة مالمو. نرجو تأكيد الحضور قبل الأول من أغسطس.',
+    'بمشاركة عائلتينا، يسعدنا دعوتكم لحضور حفل زفاف هاني و رؤى — ٥ سبتمبر ٢٠٢٦، في Magic Events بمدينة مالمو. نرجو تأكيد الحضور قبل الأول من آب.',
   ogTitle: 'هاني و رؤى — ٥ سبتمبر ٢٠٢٦',
   ogDescription:
-    'بمشاركة عائلتينا، يسعدنا دعوتكم لحضور حفل زفافنا في Magic Events بمالمو. نرجو تأكيد الحضور قبل الأول من أغسطس.',
+    'بمشاركة عائلتينا، يسعدنا دعوتكم لحضور حفل زفافنا في Magic Events بمالمو. نرجو تأكيد الحضور قبل الأول من آب.',
 
   scrollToOpen: 'مرّر لفتح الدعوة',
 
@@ -228,7 +226,7 @@ export const ar: Content = {
   names: { bride: 'هاني', groom: 'رؤى', combined: 'هاني و رؤى' },
 
   date: {
-    eyebrow: 'احفظوا الموعد',
+    eyebrow: 'الموعد',
     day: 'السبت',
     full: '٥ سبتمبر ٢٠٢٦',
     time: 'الساعة الخامسة مساءً',
@@ -252,10 +250,10 @@ export const ar: Content = {
 
   rsvp: {
     eyebrow: 'تأكيد الحضور',
-    byHeading: 'نرجو تأكيد الحضور قبل الأول من أغسطس ٢٠٢٦',
+    byHeading: 'نرجو تأكيد الحضور قبل الأول من آب ٢٠٢٦',
     subline: 'بحضوركم تكتمل فرحتنا.',
     replyButton: 'ردّ',
-    modalTitle: 'هل ستكونون معنا؟',
+    modalTitle: '',
     successTitleYes: 'رائع!',
     successTitleNo: 'شكراً لكم',
     nameLabel: 'اسمك',
@@ -283,7 +281,6 @@ export const ar: Content = {
 
   footer: {
     withLove: 'مع الحب',
-    dateLine: '٥ سبتمبر ٢٠٢٦',
   },
 
   calendar: {

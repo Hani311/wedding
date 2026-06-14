@@ -18,9 +18,10 @@ const esc = (s: string) =>
 // Fill the per-language placeholders in index.html (title, meta, OG, lang/dir,
 // Arabic font). Runs in dev too, so `npm run dev:ar` is a faithful preview.
 function localeHtml(): Plugin {
-  const amiri =
+  // Amiri (body Naskh) + Aref Ruqaa (calligraphic, for the letter greeting).
+  const arabicFonts =
     LANG === 'ar'
-      ? '<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />'
+      ? '<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet" />'
       : ''
   const ogImage = `${SITE}/${LANG}/og-image${LANG === 'ar' ? '-ar' : ''}.jpg`
   const repl: Record<string, string> = {
@@ -32,7 +33,7 @@ function localeHtml(): Plugin {
     '%OG_IMAGE%': ogImage,
     '%OG_URL%': `${SITE}/${LANG}/`,
     '%OG_LOCALE%': LANG === 'ar' ? 'ar_AR' : 'en_US',
-    '<!--%ARABIC_FONT%-->': amiri,
+    '<!--%ARABIC_FONT%-->': arabicFonts,
   }
   return {
     name: 'wedding-locale-html',
