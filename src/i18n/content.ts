@@ -238,7 +238,7 @@ export const ar: Content = {
     address: ADDRESS,
     mapUrl: MAP_URL,
     viewOnMap: 'اعرض على الخريطة',
-    closing: 'يتبعه حفل استقبال وعشاء',
+    closing: 'يتضمن حفل استقبال وعشاء',
   },
 
   addToCalendar: {
@@ -285,7 +285,7 @@ export const ar: Content = {
 
   calendar: {
     title: 'حفل زفاف هاني و رؤى',
-    description: 'يتبعه حفل استقبال وعشاء. مع الحب، هاني و رؤى.',
+    description: 'يتضمن حفل استقبال وعشاء. مع الحب، هاني و رؤى.',
   },
 }
 
