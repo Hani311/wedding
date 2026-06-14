@@ -137,7 +137,7 @@ export const en: Content = {
     eyebrow: 'Save the date',
     day: 'Saturday',
     full: 'September 5, 2026',
-    time: 'Five o’clock in the afternoon',
+    time: '5:00 PM',
   },
 
   venue: {
@@ -271,7 +271,7 @@ export const ar: Content = {
     send: 'أرسل ردّي',
     sending: 'جارٍ الإرسال…',
     thanks: (name) => `شكراً، ${name}!`,
-    comingYesMsg: 'لا نطيق صبراً لرؤيتكم!',
+    comingYesMsg: 'يسعدنا ويشرفنا حضوركم',
     comingNoMsg: 'سنفتقدكم!',
     close: 'إغلاق',
     errorGeneric: 'حدث خطأ ما. يرجى المحاولة مرة أخرى أو التواصل معنا.',
