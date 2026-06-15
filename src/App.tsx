@@ -90,7 +90,7 @@ export default function App() {
                 <path d="M12 22s7-7.5 7-13a7 7 0 1 0-14 0c0 5.5 7 13 7 13Z" />
                 <circle cx="12" cy="9" r="2.5" />
               </svg>
-              <span>{t.venue.address}</span>
+              <span className="font-amiri">{t.venue.address}</span>
             </p>
             <span className="mt-4 flex items-center justify-center gap-1.5 text-[10px] rtl:text-[13px] uppercase tracking-[0.4em] text-[color:var(--color-gold-text)] transition group-hover:text-[color:var(--color-gold-deep)]">
               {t.venue.viewOnMap}

@@ -201,6 +201,11 @@ body {
 .font-script {
   font-family: var(--font-script);
 }
+/* Amiri (classical serif) — used for the venue address so it renders the same
+   in English as it already does in Arabic (where --font-sans is Amiri). */
+.font-amiri {
+  font-family: 'Amiri', serif;
+}
 
 /* Shared eyebrow — small caps over each section title. Slightly larger and
    looser tracking than the inline 10px we had, so it stays legible without
