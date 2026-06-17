@@ -29,6 +29,7 @@ export type Content = {
 
   scrollToOpen: string
   tapToOpen: string // entry-screen prompt (the tap also starts the music)
+  invitationLabel: string // entry-screen label above the names
 
   // The letter greeting revealed word-by-word inside the envelope.
   greeting: {
@@ -127,6 +128,7 @@ export const en: Content = {
 
   scrollToOpen: 'Scroll to open',
   tapToOpen: 'Tap to open',
+  invitationLabel: 'Wedding invitation',
 
   greeting: {
     lines: [
@@ -182,7 +184,7 @@ export const en: Content = {
     plusOne: 'Plus one',
     noteLabel: 'A note for us',
     noteOptional: '(optional)',
-    notePlaceholder: 'A wish, a song request, anything…',
+    notePlaceholder: 'A wish, a request, anything…',
     send: 'Send my reply',
     sending: 'Sending…',
     thanks: (name) => `Thanks, ${name}!`,
@@ -224,6 +226,7 @@ export const ar: Content = {
 
   scrollToOpen: 'مرّر لفتح الدعوة',
   tapToOpen: 'اضغط لفتح الدعوة',
+  invitationLabel: 'حفلة زفاف',
 
   greeting: {
     lines: [
@@ -280,7 +283,7 @@ export const ar: Content = {
     plusOne: 'وضيف',
     noteLabel: 'رسالة لنا',
     noteOptional: '(اختياري)',
-    notePlaceholder: 'أمنية، أغنية تطلبونها، أي شيء…',
+    notePlaceholder: 'أمنية، طلب، أي شيء…',
     send: 'أرسل ردّي',
     sending: 'جارٍ الإرسال…',
     thanks: (name) => `شكراً، ${name}!`,

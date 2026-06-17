@@ -73,14 +73,19 @@ export default function BackgroundMusic() {
                 'radial-gradient(circle at 50% 38%, #fffdf8 0%, #f5efe2 72%)',
             }}
           >
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 0.9, 0.3, 1] }}
-              className="font-script text-5xl text-[color:var(--color-gold-deep)] md:text-6xl"
+              className="flex flex-col items-center gap-3"
             >
-              {t.names.combined}
-            </motion.span>
+              <span className="text-[11px] rtl:text-[13px] uppercase tracking-[0.5em] text-[color:var(--color-gold-text)]">
+                {t.invitationLabel}
+              </span>
+              <span className="font-script text-5xl text-[color:var(--color-gold-deep)] md:text-6xl">
+                {t.names.combined}
+              </span>
+            </motion.div>
             <motion.span
               animate={reduced ? undefined : { opacity: [0.55, 1, 0.55] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
