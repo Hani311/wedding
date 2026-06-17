@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { t } from '../i18n/content'
 
 // Lives in public/ so it ships as a static asset; BASE_URL keeps the path
@@ -6,40 +7,38 @@ import { t } from '../i18n/content'
 const SRC = `${import.meta.env.BASE_URL}i-think-they-call-this-love.mp3`
 
 /**
- * Background music with a floating mute/unmute control.
+ * Background music + the "tap to open" entry gate.
  *
- * Browsers block sound-on-load (especially mobile), so we can't truly autoplay.
- * Instead we start on the guest's FIRST interaction — their first tap or scroll,
- * which is also how they open the envelope — so it feels automatic. The button
- * lets them silence it at any time.
+ * Phones only unlock audio on a real tap/click — never on scroll or page load.
+ * So we front the invite with a one-tap intro: that single tap both starts the
+ * music AND reveals the site, which guarantees the unlock. After entry, a small
+ * floating button mutes/unmutes.
  */
 export default function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement>(null)
+  const [opened, setOpened] = useState(false)
   const [playing, setPlaying] = useState(false)
+  const reduced = useReducedMotion()
 
   useEffect(() => {
-    const audio = audioRef.current
-    if (!audio) return
-    audio.volume = 0.45
-
-    // Only a COMPLETED activation gesture unlocks audio — a tap-release, click,
-    // or keypress. pointerdown/touchstart/scroll do NOT count, so we listen for
-    // touchend (fires when the finger lifts after scrolling the envelope open),
-    // pointerup, click and keydown. The first one starts the music — no button.
-    const events = ['touchend', 'pointerup', 'click', 'keydown'] as const
-    const start = () => {
-      // play() must be called synchronously inside the gesture for mobile to
-      // allow it; the .then only runs cleanup once it actually started.
-      audio.play().then(
-        () => events.forEach((e) => window.removeEventListener(e, start)),
-        () => {}, // still blocked — wait for the next gesture
-      )
-    }
-
-    start() // desktop / already-permitted starts now; mobile waits for a gesture
-    events.forEach((e) => window.addEventListener(e, start, { passive: true }))
-    return () => events.forEach((e) => window.removeEventListener(e, start))
+    if (audioRef.current) audioRef.current.volume = 0.45
   }, [])
+
+  // Lock page scroll behind the intro so the only thing to do is tap.
+  useEffect(() => {
+    if (opened) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [opened])
+
+  // play() must run synchronously inside the tap for mobile to allow audio.
+  const open = () => {
+    audioRef.current?.play().catch(() => {})
+    setOpened(true)
+  }
 
   const toggle = () => {
     const audio = audioRef.current
@@ -58,24 +57,71 @@ export default function BackgroundMusic() {
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />
-      <button
-        type="button"
-        onClick={toggle}
-        aria-label={playing ? t.music.pause : t.music.play}
-        aria-pressed={playing}
-        className="fixed bottom-4 end-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--color-gold-deep)]/30 bg-[color:var(--color-cream)]/70 text-[color:var(--color-gold-deep)] shadow-md backdrop-blur transition hover:bg-[color:var(--color-cream)] hover:text-[color:var(--color-gold-text)]"
-      >
-        <MusicIcon playing={playing} />
-      </button>
+
+      <AnimatePresence>
+        {!opened && (
+          <motion.button
+            key="intro"
+            type="button"
+            onClick={open}
+            aria-label={t.tapToOpen}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7, ease: 'easeInOut' }}
+            className="fixed inset-0 z-[200] flex cursor-pointer flex-col items-center justify-center gap-7 px-6 text-center"
+            style={{
+              background:
+                'radial-gradient(circle at 50% 38%, #fffdf8 0%, #f5efe2 72%)',
+            }}
+          >
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 0.9, 0.3, 1] }}
+              className="font-script text-5xl text-[color:var(--color-gold-deep)] md:text-6xl"
+            >
+              {t.names.combined}
+            </motion.span>
+            <motion.span
+              animate={reduced ? undefined : { opacity: [0.55, 1, 0.55] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+              className="flex items-center gap-2.5 text-[11px] uppercase tracking-[0.45em] text-[color:var(--color-gold-text)]"
+            >
+              <NoteIcon className="h-3.5 w-3.5" />
+              {t.tapToOpen}
+            </motion.span>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {opened && (
+        <motion.button
+          type="button"
+          onClick={toggle}
+          aria-label={playing ? t.music.pause : t.music.play}
+          aria-pressed={playing}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="fixed bottom-4 end-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-[color:var(--color-gold-deep)]/30 bg-[color:var(--color-cream)]/70 text-[color:var(--color-gold-deep)] shadow-md backdrop-blur transition hover:bg-[color:var(--color-cream)] hover:text-[color:var(--color-gold-text)]"
+        >
+          <NoteIcon className="h-[18px] w-[18px]" muted={!playing} />
+        </motion.button>
+      )}
     </>
   )
 }
 
-function MusicIcon({ playing }: { playing: boolean }) {
+function NoteIcon({
+  muted = false,
+  className = 'h-[18px] w-[18px]',
+}: {
+  muted?: boolean
+  className?: string
+}) {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-[18px] w-[18px]"
+      className={className}
       fill="none"
       stroke="currentColor"
       strokeWidth="1.6"
@@ -88,7 +134,7 @@ function MusicIcon({ playing }: { playing: boolean }) {
       <circle cx="6.5" cy="18" r="2.5" fill="currentColor" stroke="none" />
       <circle cx="16.5" cy="16" r="2.5" fill="currentColor" stroke="none" />
       {/* muted: diagonal slash */}
-      {!playing && <path d="M3 3 L21 21" />}
+      {muted && <path d="M3 3 L21 21" />}
     </svg>
   )
 }

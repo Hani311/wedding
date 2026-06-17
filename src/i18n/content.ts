@@ -28,6 +28,7 @@ export type Content = {
   ogDescription: string
 
   scrollToOpen: string
+  tapToOpen: string // entry-screen prompt (the tap also starts the music)
 
   // The letter greeting revealed word-by-word inside the envelope.
   greeting: {
@@ -125,6 +126,7 @@ export const en: Content = {
     'Together with our families, we request the honour of your presence at Magic Events, Malmö. Kindly RSVP by August 1.',
 
   scrollToOpen: 'Scroll to open',
+  tapToOpen: 'Tap to open',
 
   greeting: {
     lines: [
@@ -221,6 +223,7 @@ export const ar: Content = {
     'بمشاركة عائلتينا، يسعدنا دعوتكم لحضور حفل زفافنا في Magic Events بمالمو. نرجو تأكيد الحضور قبل الأول من آب.',
 
   scrollToOpen: 'مرّر لفتح الدعوة',
+  tapToOpen: 'اضغط لفتح الدعوة',
 
   greeting: {
     lines: [
