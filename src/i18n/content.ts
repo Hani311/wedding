@@ -96,6 +96,11 @@ export type Content = {
     withLove: string
   }
 
+  music: {
+    play: string // aria-label when paused (tapping starts it)
+    pause: string // aria-label when playing
+  }
+
   // iCalendar event text (Add-to-calendar / .ics)
   calendar: {
     title: string
@@ -191,6 +196,11 @@ export const en: Content = {
     withLove: 'With love',
   },
 
+  music: {
+    play: 'Play music',
+    pause: 'Pause music',
+  },
+
   calendar: {
     title: 'Hani & Roaa’s Wedding',
     description: 'Reception and dinner to follow. With love, Hani & Roaa.',
@@ -281,6 +291,11 @@ export const ar: Content = {
 
   footer: {
     withLove: 'مع الحب',
+  },
+
+  music: {
+    play: 'تشغيل الموسيقى',
+    pause: 'إيقاف الموسيقى',
   },
 
   calendar: {

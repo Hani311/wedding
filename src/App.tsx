@@ -2,6 +2,7 @@ import { useState } from 'react'
 import AddToCalendar from './components/AddToCalendar'
 import AnimatedDivider from './components/AnimatedDivider'
 import AnimatedText from './components/AnimatedText'
+import BackgroundMusic from './components/BackgroundMusic'
 import EnvelopeScene from './components/EnvelopeScene'
 import FallingPetals from './components/FallingPetals'
 import FloralBackground from './components/FloralBackground'
@@ -158,6 +159,7 @@ export default function App() {
       </footer>
 
       <RsvpModal open={rsvpOpen} onClose={() => setRsvpOpen(false)} />
+      <BackgroundMusic />
     </main>
   )
 }
