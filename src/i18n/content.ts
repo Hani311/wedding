@@ -226,7 +226,7 @@ export const ar: Content = {
 
   scrollToOpen: 'مرّر لفتح الدعوة',
   tapToOpen: 'اضغط لفتح الدعوة',
-  invitationLabel: 'حفلة زفاف',
+  invitationLabel: 'حفل زفاف',
 
   greeting: {
     lines: [
